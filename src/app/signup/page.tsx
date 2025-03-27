@@ -18,8 +18,13 @@ export default function SignupPage() {
     try {
       await signUp(email, password, username);
       router.push('/profile'); // Redireciona após cadastro
-    } catch (err: any) {
-      setError(err.message || 'Erro no cadastro');
+    } catch (err: unknown) {
+      // Verificação do tipo do erro
+      if (err instanceof Error) {
+        setError(err.message || 'Erro no cadastro');
+      } else {
+        setError('Erro desconhecido');
+      }
     }
   };
 
