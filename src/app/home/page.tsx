@@ -1,17 +1,13 @@
-// src/app/home/page.tsx
-
 'use client'; // Indica que este é um componente de cliente
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { createPost, getPosts, likePost } from '@/lib/posts'; // Funções para lidar com posts
+import { createPost, getPosts, likePost, Post } from '@/lib/posts'; // Importar o tipo Post
 import styles from './home.module.css'; // Estilos da página
 
 export default function HomePage() {
-  const [posts, setPosts] = useState<any[]>([]); // Lista de posts
+  const [posts, setPosts] = useState<Post[]>([]); // Lista de posts com o tipo Post
   const [newPost, setNewPost] = useState(''); // Conteúdo do novo post
   const [error, setError] = useState(''); // Mensagem de erro
-  const router = useRouter();
 
   // Carrega os posts ao iniciar a página
   useEffect(() => {
@@ -19,7 +15,7 @@ export default function HomePage() {
       try {
         const posts = await getPosts();
         setPosts(posts);
-      } catch (err) {
+      } catch (err: unknown) {
         setError('Erro ao carregar posts');
       }
     };
@@ -35,7 +31,7 @@ export default function HomePage() {
       const createdPost = await createPost(newPost);
       setPosts([createdPost, ...posts]); // Adiciona o novo post ao feed
       setNewPost('');
-    } catch (err) {
+    } catch (err: unknown) {
       setError('Erro ao criar o post');
     }
   };
@@ -49,7 +45,7 @@ export default function HomePage() {
           post.id === postId ? { ...post, likes: post.likes + 1 } : post
         )
       );
-    } catch (err) {
+    } catch (err: unknown) {
       setError('Erro ao curtir o post');
     }
   };
