@@ -1,0 +1,60 @@
+/* src/app/signup/layout.css */
+
+/* Estilos para o layout da página */
+.signup-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Cabeçalho */
+  .signup-header {
+    background-color: #1e3a8a; /* Azul escuro */
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .signup-header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .signup-header nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .signup-header nav ul li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  .signup-header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .signup-header nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Conteúdo principal */
+  .signup-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9fafb;
+    padding: 2rem;
+  }
+  
+  .signup-footer {
+    background-color: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.875rem;
+  }  
